@@ -17,11 +17,10 @@ class GrosseryList extends Controller {
     parent::__construct($param);
   }
 
-  public function postMessage() {
+  public function postGrosseryList() {
     $this->formControl = new FormControl();
-    
-    if (in_array('add', $this->params)) {
 
+    if (in_array('add', $this->params)) {
       $cleanBody = $this->formControl->sanitizeInput($this->body);
 
       if (in_array(false, $cleanBody)) {
@@ -30,16 +29,11 @@ class GrosseryList extends Controller {
         return ['message' => 'Erreur veuillez remplir tous les champs'];
       }
 
-      $user = $this->user->getByTokenAllInformations($cleanBody['userToken']);
-
-      if ($user) {
-
         $created_at = date('Y-m-d H:i:s');
-        $this->message->add($cleanBody['title'], $cleanBody['message'], $created_at, $user['id'], $user['home_id']);
+        $this->message->add($cleanBody['title'], $cleanBody['date'], $created_at);
         
         header("HTTP/1.0 200 OK");
-        return ['message' => 'message crée avec succès'];
-      }
+        return ['message' => 'List de course crée avec succès'];
 
     }
     

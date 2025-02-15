@@ -9,5 +9,5 @@ new Router([
 
   # message actions
   'grossery_lists/' => GrosseryList::class,
-  'message/:add' => GrosseryList::class,
+  'grossery_lists/:add' => GrosseryList::class,
 ]);
