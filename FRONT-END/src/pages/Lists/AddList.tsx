@@ -1,6 +1,6 @@
 import {FormEvent, useState} from "react";
-import {ListInterface} from "../utils/interfaces/ListInterface.ts";
-import {addList} from "../utils/endpoint.ts";
+import {ListInterface} from "../../utils/interfaces/ListInterface.ts";
+import {addList} from "../../utils/endpoint.ts";
 
 const AddList = () => {
 
@@ -8,32 +8,32 @@ const AddList = () => {
 
   const submitForm = async (e: FormEvent) => {
     e.preventDefault();
-    if (!list.name || !list.date) {
+    if (!list.title || !list.date) {
       throw new Error(
         "Une (ou plusieurs) valeur est invalide."
       );
     }
 
-    await fetch(addList, {
-      method: "POST",
+    fetch(addList, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(list),
+      body: JSON.stringify(list)
     })
-      .then((response) => {
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erreur dans la requête');
+        }
         return response.json();
       })
-      .then((datas) => {
-        if (datas.status !== 200) {
-          throw new Error(
-            "Le statut de la requête est invalide."
-          );
-        }
-        window.location.href="/";
+      .then(data => {
+        console.log('Réponse du serveur:', data);
       })
-      .catch((err) => console.error(`Erreur : ${err}`));
-  };
+      .catch(error => {
+        console.error('Erreur:', error);
+      });
+  }
 
   return (
     <div>
@@ -41,15 +41,15 @@ const AddList = () => {
 
       <form className="max-w-sm mx-auto" method="POST" onSubmit={submitForm}>
         <div className="mb-5">
-          <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom de
+          <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom de
             l'article</label>
           <input type="text"
-                 id="name"
+                 id="title"
                  onChange={(e) => {
-                   const name = e.target.value ?? null;
+                   const title = e.target.value ?? null;
                    setList((prevState) => ({
                      ...prevState,
-                     name: name,
+                     title: title,
                    }));
                  }}
                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

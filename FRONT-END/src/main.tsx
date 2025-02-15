@@ -4,7 +4,7 @@ import './index.css'
 import Nav from "./components/global/Nav.tsx";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Homepage from "./pages/Homepage.tsx";
-import AddList from "./pages/AddList.tsx";
+import AddList from "./pages/Lists/AddList.tsx";
 
 export const router = createBrowserRouter([
   {
