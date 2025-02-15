@@ -5,15 +5,21 @@ import Nav from "./components/global/Nav.tsx";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Homepage from "./pages/Homepage.tsx";
 import AddList from "./pages/Lists/AddList.tsx";
+import {createList, homepage, showLists} from "./utils/links.ts";
+import ShowLists from "./pages/Lists/ShowLists.tsx";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: homepage,
     element: <Homepage />,
   },
   {
-    path: "/creer_liste",
+    path: createList,
     element: <AddList />,
+  },
+  {
+    path: showLists,
+    element: <ShowLists />
   },
 ]);
 

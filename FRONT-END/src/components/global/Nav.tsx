@@ -1,26 +1,18 @@
+import {createList, homepage, showLists} from "../../utils/links.ts";
+
 const Nav = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl" href="/">QuickList</a>
+        <a className="btn btn-ghost text-xl" href={homepage}>QuickList</a>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a href="/creer_liste">Créer ta liste</a>
+            <a className="font-bold" href={createList}>Créer ta liste</a>
           </li>
           <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="bg-base-100 rounded-t-none p-2">
-                <li>
-                  <a>test</a>
-                </li>
-                <li>
-                  <a>Link 2</a>
-                </li>
-              </ul>
-            </details>
+            <a className="font-bold" href={showLists}>Voir vos listes</a>
           </li>
         </ul>
       </div>

@@ -1,3 +1,5 @@
+import {createList, showLists} from "../../utils/links.ts";
+
 const Banner = () => {
   return (
     <section className="bg-gray-50">
@@ -11,9 +13,16 @@ const Banner = () => {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
               className="block w-full rounded-sm bg-red-600 px-12 py-3 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:ring-3 focus:outline-hidden sm:w-auto"
-              href="#"
+              href={createList}
             >
               Créer une liste
+            </a>
+
+            <a
+              className="block w-full rounded-sm px-12 py-3 text-sm font-medium text-red-600 shadow-sm hover:text-red-700 focus:ring-3 focus:outline-hidden sm:w-auto"
+              href={showLists}
+            >
+              Voir vos listes
             </a>
           </div>
         </div>
