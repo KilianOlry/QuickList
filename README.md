@@ -69,6 +69,18 @@ $ npm i | npm install
 $ cd BACK-END
 $ composer install
 
+------
+# Add your informations for the BDD access
+Go to 'SqlConnect.php' & add your informations
+`
+    $this->host = '';
+    $this->port = '';
+    $this->dbname = '';
+    $this->user = '';
+    $this->password = '';
+`
+
+    
 # Run the project
 $ cd FRONT-END
 $ npm run dev
