@@ -43,6 +43,7 @@ class GrosseryList extends Controller
 
     public function getGrosseryList()
     {
+        return "bonjour";
         return $this->grosseryListModel->getAll();
     }
 

@@ -8,7 +8,7 @@ use App\Controllers\Product;
 
 new Router([
 
-    # message actions
+    # GROSSERY LIST ACTIONS
     'grossery_lists/' => GrosseryList::class,
     'grossery_lists/:add' => GrosseryList::class,
     'grossery_lists/:delete' => GrosseryList::class,
