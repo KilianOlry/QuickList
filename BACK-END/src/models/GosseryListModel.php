@@ -68,7 +68,7 @@ class GosseryListModel extends SqlConnect {
       $req->execute([
           ':id' => $id,
       ]);
-      return $results = $req->fetch(PDO::FETCH_ASSOC);
+        return $req->rowCount() > 0 ? $req->fetchAll(PDO::FETCH_ASSOC) : new stdClass();
     }
 
     public function update(string $id, ?string $title, ?string $date): mixed {

@@ -41,15 +41,22 @@ class GrosseryList extends Controller
 
     }
 
-    public function getGrosseryList()
-    {
+    public function getGrosseryList() {
+
+        if ($this->params) {
+            return $this->grosseryListModel->getById(intval($this->params["id"]));
+        }
+
         return $this->grosseryListModel->getAll();
     }
 
     public function putGrosseryList() {
         $this->formControl = new FormControl();
         $cleanBody = $this->formControl->sanitizeInput($this->body);
-        return $this->grosseryListModel->update($cleanBody['id'], $cleanBody['title'], $cleanBody['date']);
+        $this->grosseryListModel->update($cleanBody['id'], $cleanBody['title'], $cleanBody['date']);
+
+        header("HTTP/1.0 200 OK");
+        return ['message' => 'Produit ajouté avec succès'];
 
     }
 
