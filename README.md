@@ -31,7 +31,11 @@ Auteur : Kilian Olry
 ## :sparkles: Features
 
 - Création de liste de course
-- Création de produit associé à une liste course
+- Modification de la liste de course
+- Vue des listes de courses
+- Suppression de la liste de course
+- Création de produit associé à une liste de course
+- Suppression du produit
 
 ## :rocket: Technologies
 
