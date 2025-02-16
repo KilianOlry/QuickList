@@ -6,17 +6,20 @@ use App\Controllers\Controller;
 use App\Models\ProductModel;
 use App\Services\FormControl;
 
-class Product extends Controller{
+class Product extends Controller
+{
     protected object $product;
     public $formControl;
 
-    public function __construct($param) {
+    public function __construct($param)
+    {
         $this->product = new ProductModel();
 
         parent::__construct($param);
     }
 
-    public function postProduct() {
+    public function postProduct()
+    {
         $this->formControl = new FormControl();
 
         if (in_array('add', $this->params)) {
@@ -37,11 +40,13 @@ class Product extends Controller{
 
     }
 
-    public function deleteMessage() {
-        return $this->message->delete(intval($this->params['id']));
+    public function deleteProduct()
+    {
+        return $this->product->delete(intval($this->body['id']));
     }
 
-    public function getProduct() {
+    public function getProduct()
+    {
 
         return $this->product->getAll();
     }

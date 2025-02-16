@@ -23,4 +23,13 @@ class ProductModel extends SqlConnect {
         return $req->rowCount() > 0 ? $req->fetchAll(PDO::FETCH_ASSOC) : new stdClass();
     }
 
+    public function delete(int $id) {
+        $query = 'DELETE FROM products WHERE id = :id';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([
+            ':id' => $id,
+        ]);
+        return true;
+    }
+
 }
