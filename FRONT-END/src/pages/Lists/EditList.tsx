@@ -50,26 +50,27 @@ const EditList = () => {
 
   const submitForm = async (e: FormEvent) => {
     e.preventDefault();
-    fetch(updateList, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(list)
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Erreur dans la requête');
-        }
-        return response.json();
-      })
-      .then(data => {
-        modal.showModal();
-      })
-      .catch(error => {
-        console.error('Erreur:', error);
+
+    try {
+      const response = await fetch(updateList, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(list),
       });
+
+      if (!response.ok) {
+        throw new Error('Erreur dans la requête');
+      }
+
+      modal?.showModal();
+
+    } catch (error) {
+      console.error('Erreur:', error);
+    }
   }
+
 
   return (
     <div>

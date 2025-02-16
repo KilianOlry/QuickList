@@ -22,7 +22,7 @@ const Modal = ({action, listId, onDelete}: Props) => {
               <h3 className="font-bold text-xl text-center my-8">Etes-vous sûr de vouloir supprimer cette liste ?</h3>
               <form className="flex justify-center gap-4" onSubmit={handleDelete}>
                 <button type="submit" className="btn btn-neutral">
-                  Supprimer {listId}
+                  Supprimer
                 </button>
               </form>
             </div>

@@ -9,5 +9,6 @@ export const deleteList: string = baseUrl + "grossery_lists/delete/";
 
 // PRODUCTS
 export const addProduct: string = baseUrl + "product/add/";
+export const deleteProducts: string = baseUrl + "product/delete/";
 
 
