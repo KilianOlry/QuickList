@@ -22,13 +22,11 @@ class Product extends Controller{
         if (in_array('add', $this->params)) {
             $cleanBody = $this->formControl->sanitizeInput($this->body);
 
-
             if (in_array(false, $cleanBody)) {
 
                 header("HTTP/1.0 406 Not Acceptable");
                 return ['message' => 'Erreur veuillez remplir tous les champs'];
             }
-
 
             $this->product->add($cleanBody['name'], $cleanBody['description'], $cleanBody['id']);
 

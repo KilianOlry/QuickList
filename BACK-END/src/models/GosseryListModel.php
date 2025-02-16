@@ -18,9 +18,58 @@ class GosseryListModel extends SqlConnect {
 }
 
     public function getAll() {
-      $req = $this->db->prepare("SELECT * FROM lists");
-      $req->execute();
+        $query = 'SELECT 
+                lists.id AS list_id, 
+                lists.title AS list_title, 
+                lists.date AS list_date, 
+                products.id AS product_id, 
+                products.name AS product_name, 
+                products.description AS product_description 
+              FROM lists 
+              LEFT JOIN products ON lists.id = products.list_id';
+
+      $req = $this->db->prepare($query);
+        try {
+            $req->execute();
+            $results = $req->fetchAll(PDO::FETCH_ASSOC);
+            $lists = [];
+
+            foreach ($results as $row) {
+                $listId = $row['list_id'];
+
+                if (!isset($lists[$listId])) {
+                    $lists[$listId] = [
+                        'list_id' => $row['list_id'],
+                        'list_title' => $row['list_title'],
+                        'list_date' => $row['list_date'],
+                        'products' => []
+                    ];
+                }
+
+                if ($row['product_id']) {
+                    $lists[$listId]['products'][] = [
+                        'product_id' => $row['product_id'],
+                        'product_name' => $row['product_name'],
+                        'product_description' => $row['product_description']
+                    ];
+                }
+            }
+            return array_values($lists);
+        } catch (PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+            return new stdClass();
+        }
       return $req->rowCount() > 0 ? $req->fetchAll(PDO::FETCH_ASSOC) : new stdClass();
+    }
+
+
+    public function delete(int $id) {
+      $query = 'DELETE FROM lists WHERE id = :id';
+      $stmt = $this->db->prepare($query);
+      $stmt->execute([
+          ':id' => $id,
+      ]);
+
     }
 
 }

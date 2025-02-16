@@ -11,6 +11,7 @@ new Router([
     # message actions
     'grossery_lists/' => GrosseryList::class,
     'grossery_lists/:add' => GrosseryList::class,
+    'grossery_lists/:delete' => GrosseryList::class,
 
 
     'products/' => Product::class,
