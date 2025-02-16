@@ -7,6 +7,8 @@ import Homepage from "./pages/Homepage.tsx";
 import AddList from "./pages/Lists/AddList.tsx";
 import {createList, homepage, showLists} from "./utils/links.ts";
 import ShowLists from "./pages/Lists/ShowLists.tsx";
+import addProduct from "./pages/Products/AddProduct.tsx";
+import AddProduct from "./pages/Products/AddProduct.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +22,10 @@ export const router = createBrowserRouter([
   {
     path: showLists,
     element: <ShowLists />
+  },
+  {
+    path: "/add_product/:id",
+    element: <AddProduct />
   },
 ]);
 

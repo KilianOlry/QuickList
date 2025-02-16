@@ -79,7 +79,7 @@ const AddList = () => {
         </div>
       </form>
 
-      <Modal/>
+      <Modal action={"create-list"}/>
     </div>
   )
 }
