@@ -1,5 +1,5 @@
 import {FormEvent, useEffect, useState} from "react";
-import {addList, deleteList, getList} from "../../utils/endpoint.ts";
+import {deleteList, getLists} from "../../utils/endpoint.ts";
 import EditIcon from "../../components/icons/EditIcon.tsx";
 import TrashIcon from "../../components/icons/TrashIcon.tsx";
 import AddIcon from "../../components/icons/Add.tsx";
@@ -14,7 +14,7 @@ const ShowLists = () => {
   const [error, setError] = useState(null);
 
   async function getGrosseryLists() {
-    return fetch(getList)
+    return fetch(getLists)
       .then((res) => res.json())
       .then((data) => data);
   }
@@ -42,7 +42,6 @@ const ShowLists = () => {
       setError("Erreur lors de la suppression.");
     }
   }
-
 
 
   useEffect(() => {
@@ -81,7 +80,6 @@ const ShowLists = () => {
 
   return (
     <>
-      {console.log(lists)}
       <h1 className="text-3xl font-extrabold sm:text-5xl italic text-center my-14">
         Voici vos
         <span className="font-extrabold text-red-700"> listes</span>
@@ -109,7 +107,7 @@ const ShowLists = () => {
                 </div>
               ))}
               <div className="absolute -top-6 right-1 w-full flex justify-end gap-4">
-                <a href="#"
+                <a href={`/edit_list/${item.list_id}`}
                    className="bg-gray-900 rounded-full size-10 grid place-content-center p-2 shadow-md">
                   <EditIcon/>
                 </a>

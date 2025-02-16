@@ -74,6 +74,24 @@ const Modal = ({action, listId, onDelete}: Props) => {
         </>
       )
       break;
+    case 'edit-list':
+      return (
+        <>
+          <dialog id="modal" className="modal">
+            <div className="modal-box">
+              <h3 className="font-bold text-xl text-center">Votre produit a bien été modifié</h3>
+
+              <div className="flex justify-center gap-4 my-10">
+                <a href={showLists} className="btn btn-neutral">Voir vos listes</a>
+              </div>
+            </div>
+            <form method="dialog" className="modal-backdrop">
+              <button>close</button>
+            </form>
+          </dialog>
+        </>
+      )
+      break;
     default:
       console.log(`Sorry, we are out of `);
   }

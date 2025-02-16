@@ -1,8 +1,10 @@
-const baseUrl: string = "http://127.0.0.1:5500/";
+export const baseUrl: string = "http://127.0.0.1:5500/";
 
 // GROSSERY LIST
-export const getList: string = baseUrl + "grossery_lists/";
+export const getLists: string = baseUrl + "grossery_lists/";
+export const getList: string = baseUrl + "grossery_list/";
 export const addList: string = baseUrl + "grossery_lists/add/";
+export const updateList: string = baseUrl + "grossery_lists/put/";
 export const deleteList: string = baseUrl + "grossery_lists/delete/";
 
 // PRODUCTS
