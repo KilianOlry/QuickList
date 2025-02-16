@@ -1,8 +1,7 @@
 import {FormEvent, useEffect, useState} from "react";
-import {addList, getList, updateList,} from "../../utils/endpoint.ts";
+import {getList, updateList,} from "../../utils/endpoint.ts";
 import Modal from "../../components/Modal.tsx";
 import {useParams} from "react-router-dom";
-import {ProductInterface} from "../../utils/interfaces/ProductInterface.ts";
 import {ListInterface} from "../../utils/interfaces/ListInterface.ts";
 
 const EditList = () => {
