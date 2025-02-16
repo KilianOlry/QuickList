@@ -25,6 +25,9 @@
 
 <br>
 
+## :white_check_mark: Requirements
+Auteur : Kilian Olry
+
 ## :sparkles: Features
 
 - Création de liste de course
