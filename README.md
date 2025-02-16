@@ -25,7 +25,7 @@
 
 <br>
 
-## :white_check_mark: Requirements
+## :white_check_mark: Auteur
 Auteur : Kilian Olry
 
 ## :sparkles: Features
