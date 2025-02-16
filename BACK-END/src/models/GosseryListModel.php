@@ -62,6 +62,44 @@ class GosseryListModel extends SqlConnect {
       return $req->rowCount() > 0 ? $req->fetchAll(PDO::FETCH_ASSOC) : new stdClass();
     }
 
+    public function getById(int $id) {
+      $query = 'SELECT * FROM lists WHERE id = :id';
+      $req = $this->db->prepare($query);
+      $req->execute([
+          ':id' => $id,
+      ]);
+      return $results = $req->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function update(string $id, ?string $title, ?string $date): mixed {
+        $recordToUpdate = $this->getById($id);
+        $updateFields = [];
+        $params = [];
+
+        if ($recordToUpdate['title'] !== $title) {
+            $updateFields[] = 'title = :title';
+            $params[':title'] = $title;
+        }
+
+        if ($date !== "" && $recordToUpdate['date'] !== $date) {
+            $updateFields[] = 'date = :date';
+            $params[':date'] = $date ?: null;
+        }
+
+        if (empty($updateFields)) {
+            return null;
+        }
+
+        $query = 'UPDATE lists SET ' . implode(', ', $updateFields) . ' WHERE id = :id';
+        $stmt = $this->db->prepare($query);
+
+        $params[':id'] = $id;
+
+        $stmt->execute($params);
+
+        return true;
+    }
+
 
     public function delete(int $id) {
       $query = 'DELETE FROM lists WHERE id = :id';

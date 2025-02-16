@@ -43,8 +43,14 @@ class GrosseryList extends Controller
 
     public function getGrosseryList()
     {
-        return "bonjour";
         return $this->grosseryListModel->getAll();
+    }
+
+    public function putGrosseryList() {
+        $this->formControl = new FormControl();
+        $cleanBody = $this->formControl->sanitizeInput($this->body);
+        return $this->grosseryListModel->update($cleanBody['id'], $cleanBody['title'], $cleanBody['date']);
+
     }
 
     public function deleteGrosseryList()

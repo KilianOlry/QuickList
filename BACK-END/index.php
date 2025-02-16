@@ -12,6 +12,7 @@ new Router([
     'grossery_lists/' => GrosseryList::class,
     'grossery_lists/:add' => GrosseryList::class,
     'grossery_lists/:delete' => GrosseryList::class,
+    'grossery_lists/:put' => GrosseryList::class,
 
 
     'products/' => Product::class,
